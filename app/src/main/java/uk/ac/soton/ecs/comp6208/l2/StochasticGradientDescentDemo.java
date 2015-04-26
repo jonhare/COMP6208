@@ -5,8 +5,15 @@ import java.io.IOException;
 import org.openimaj.content.slideshow.SlideshowApplication;
 
 import uk.ac.soton.ecs.comp6208.utils.Utils;
+import uk.ac.soton.ecs.comp6208.utils.annotations.Demonstration;
 
-public class StochasticGradientDescentDemo extends BatchGradientDescentDemo {
+/**
+ * Demo showing stochastic gradient descent to fit a line
+ *
+ * @author Jonathon Hare (jsh2@ecs.soton.ac.uk)
+ */
+@Demonstration(title = "Stochastic Gradient Descent Demo")
+public class StochasticGradientDescentDemo extends AbstractGradientDescentDemo {
 	int i = 0;
 
 	@Override
