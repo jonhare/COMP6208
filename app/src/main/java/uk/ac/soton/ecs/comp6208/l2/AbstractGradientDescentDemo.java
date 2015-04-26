@@ -111,6 +111,7 @@ public abstract class AbstractGradientDescentDemo implements Slide, Runnable {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				button.setEnabled(false);
 				new Thread(AbstractGradientDescentDemo.this).start();
 			}
 		});
@@ -179,25 +180,29 @@ public abstract class AbstractGradientDescentDemo implements Slide, Runnable {
 
 			performIteration();
 
-			final double[][] tmp = new double[][] { Arrays.copyOf(errorSeries[0], iter + 1),
-					Arrays.copyOf(errorSeries[1], iter + 1) };
-			tmp[0][iter] = iter;
-			tmp[1][iter] = this.computeError();
-			this.errorSeries = tmp;
-
-			chartDataset.removeSeries("line");
-			chartDataset.addSeries("line", computeLineData());
-			chartContainer.update(chart.createBufferedImage(chartContainer.image.getWidth(),
-					chartContainer.image.getHeight()));
-
-			paramsField.setText(String.format("%2.2f, %2.2f", params[0], params[1]));
-
-			errorDataset.removeSeries("data");
-			errorDataset.addSeries("data", errorSeries);
-			((NumberAxis) errorChart.getXYPlot().getDomainAxis()).setRange(0, iter);
-			errorContainer.update(errorChart.createBufferedImage(errorContainer.image.getWidth(),
-					errorContainer.image.getHeight()));
+			updateDisplay();
 		}
+	}
+
+	protected void updateDisplay() {
+		final double[][] tmp = new double[][] { Arrays.copyOf(errorSeries[0], iter + 1),
+				Arrays.copyOf(errorSeries[1], iter + 1) };
+		tmp[0][iter] = iter;
+		tmp[1][iter] = this.computeError();
+		this.errorSeries = tmp;
+
+		chartDataset.removeSeries("line");
+		chartDataset.addSeries("line", computeLineData());
+		chartContainer.update(chart.createBufferedImage(chartContainer.image.getWidth(),
+				chartContainer.image.getHeight()));
+
+		paramsField.setText(String.format("%2.2f, %2.2f", params[0], params[1]));
+
+		errorDataset.removeSeries("data");
+		errorDataset.addSeries("data", errorSeries);
+		((NumberAxis) errorChart.getXYPlot().getDomainAxis()).setRange(0, iter);
+		errorContainer.update(errorChart.createBufferedImage(errorContainer.image.getWidth(),
+				errorContainer.image.getHeight()));
 	}
 
 	/**
