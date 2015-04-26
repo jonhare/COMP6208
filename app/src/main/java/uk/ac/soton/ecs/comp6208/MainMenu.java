@@ -137,7 +137,8 @@ public class MainMenu extends JPanel {
 		info.setSize(info.getPreferredSize());
 		info.setMaximumSize(info.getPreferredSize());
 
-		final JLabel link = Utils.linkify("http://comp6208.ecs.soton.ac.uk", "http://comp6208.ecs.soton.ac.uk",
+		final JLabel link = Utils.linkify("https://secure.ecs.soton.ac.uk/notes/comp6208/",
+				"https://secure.ecs.soton.ac.uk/notes/comp6208/",
 				"Go to the course web site");
 		link.setHorizontalAlignment(SwingConstants.CENTER);
 		info.add(link);
