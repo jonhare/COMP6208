@@ -112,6 +112,7 @@ public abstract class AbstractGradientDescentDemo implements Slide, Runnable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				button.setEnabled(false);
+				base.requestFocus();
 				new Thread(AbstractGradientDescentDemo.this).start();
 			}
 		});
@@ -170,7 +171,8 @@ public abstract class AbstractGradientDescentDemo implements Slide, Runnable {
 
 	@Override
 	public void close() {
-
+		params = new double[] { 0, 0 };
+		iter = 0;
 	}
 
 	@Override
@@ -206,9 +208,12 @@ public abstract class AbstractGradientDescentDemo implements Slide, Runnable {
 	}
 
 	/**
-	 * Perform a single iteration (epoch) of gradient descent
+	 * Perform a single iteration (epoch) of gradient descent. Superclasses
+	 * should override.
 	 */
-	protected abstract void performIteration();
+	protected void performIteration() {
+
+	}
 
 	protected double[] errorv(double[][] X, double[] params) {
 		final double[] ev = new double[X[0].length];
