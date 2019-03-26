@@ -28,7 +28,7 @@ public class Lecture2 {
 		for (int i = 6; i <= 30; i++)
 			slides.add(new PictureSlide(Lecture2.class.getResource(String.format("l2.%03d.jpg", i))));
 
-		slides.add(new BatchGradientDescentDemo());
+		slides.add(new GradientDescentDemo());
 
 		for (int i = 31; i <= 32; i++)
 			slides.add(new PictureSlide(Lecture2.class.getResource(String.format("l2.%03d.jpg", i))));

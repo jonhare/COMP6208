@@ -18,7 +18,9 @@ public class Lecture1 {
 	public static void main(String[] args) throws IOException {
 		final List<Slide> slides = new ArrayList<Slide>();
 
-		for (int i = 1; i <= 51; i++)
+		for (int i = 1; i <= 2; i++)
+			slides.add(new PictureSlide(Lecture1.class.getResource(String.format("l1.%03d.jpg", i))));
+		for (int i = 4; i <= 51; i++)
 			slides.add(new PictureSlide(Lecture1.class.getResource(String.format("l1.%03d.jpg", i))));
 
 		new SlideshowApplication(slides, 1024, 768, Utils.BACKGROUND_IMAGE);
